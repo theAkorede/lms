@@ -24,12 +24,12 @@ interface CourseCardProps {
 
 export function CourseCard({ course, progress, href }: CourseCardProps) {
   return (
-    <Link
+  <Link
       href={href}
       prefetch={false}
       className="group hover:no-underline flex"
     >
-      <div className="bg-card rounded-xl overflow-hidden shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl hover:translate-y-1 border border-border flex flex-col flex-1">
+      <div className="bg-card rounded-xl overflow-hidden shadow-lg transition-all duration-300 ease-in-out hover:shadow-xl hover:translate-y-[-4px] border border-border flex flex-col flex-1">
         <div className="relative h-52 w-full overflow-hidden">
           {course.image ? (
             <Image
@@ -43,7 +43,7 @@ export function CourseCard({ course, progress, href }: CourseCardProps) {
               <Loader size="lg" />
             </div>
           )}
-          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
           <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
             <span className="text-sm font-medium px-3 py-1 bg-black/50 text-white rounded-full backdrop-blur-sm">
               {course.category?.name || "Uncategorized"}
@@ -52,7 +52,7 @@ export function CourseCard({ course, progress, href }: CourseCardProps) {
               <span className="text-white font-bold px-3 py-1 bg-black/50 dark:bg-white/20 rounded-full backdrop-blur-sm">
                 {course.price === 0
                   ? "Free"
-                  :`₦${course.price.toLocaleString("en-NG", {
+                  : `$${course.price.toLocaleString("en-US", {
                       minimumFractionDigits: 2,
                     })}`}
               </span>
@@ -104,4 +104,6 @@ export function CourseCard({ course, progress, href }: CourseCardProps) {
       </div>
     </Link>
   );
-}
+};
+
+export default CourseCard;
