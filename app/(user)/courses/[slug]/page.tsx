@@ -97,7 +97,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
                       </h3>
                     </div>
                     <div className="divide-y divide-border">
-                      {module.lessons?.map((lesson, lessonIndex) => (
+                      {module.lessons?.map((lesson: any, lessonIndex: number) => (
                         <div
                           key={lesson._id}
                           className="p-4 hover:bg-muted/50 transition-colors"
